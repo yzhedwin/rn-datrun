@@ -5,8 +5,11 @@ import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+import { useSession } from "@/contexts/AuthContext";
 
 export default function HomeScreen() {
+  const { signOut } = useSession();
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
@@ -22,6 +25,7 @@ export default function HomeScreen() {
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
+
         <ThemedText type="subtitle">Step 1: Try it</ThemedText>
         <ThemedText>
           Edit{" "}
@@ -36,6 +40,13 @@ export default function HomeScreen() {
           </ThemedText>{" "}
           to open developer tools.
         </ThemedText>
+        {/* <ThemedText
+          onPress={() => {
+            // The `app/(app)/_layout.tsx` will redirect to the sign-in screen.
+            signOut();
+          }}>
+          Sign Out
+        </ThemedText> */}
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 2: Explore</ThemedText>
@@ -78,3 +89,5 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
 });
+
+
