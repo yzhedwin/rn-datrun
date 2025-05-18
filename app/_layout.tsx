@@ -12,7 +12,6 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 import { SessionProvider } from "@/contexts/AuthContext";
 
 export default function RootLayout() {
-  const isSignedIn = false; // Replace with your authentication logic
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
@@ -27,6 +26,10 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <SessionProvider>
         <Slot />
+        {/* <Stack>  Uncomment this to use tab navigation animation
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="+not-found" />
+        </Stack> */}
         <StatusBar style="auto" />
       </SessionProvider>
     </ThemeProvider>

@@ -5,13 +5,19 @@ import { Platform } from "react-native";
 import { HapticTab } from "@/components/HapticTab";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import TabBarBackground from "@/components/ui/TabBarBackground";
+import { ThemedText } from "@/components/ThemedText";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { useSession } from '@/contexts/AuthContext';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
   const { session, isLoading } = useSession();
   // You can keep the splash screen open, or render a loading screen like we do here.
+  // With Expo Router, something must be rendered to the screen while loading the initial 
+  // auth state. In the example above, the app layout renders a loading message. 
+  // Alternatively, you can make the index route a loading state and move the initial route
+  //  to something such as /home, which is similar to how X works.
   if (isLoading) {
     return <ThemedText>Loading...</ThemedText>;
   }
@@ -50,7 +56,7 @@ export default function TabLayout() {
           ),
         }}
       />
-      <Tabs.Screen
+      <Tabs.Screen //make it the biggest icon with circular background
         name="run"
         options={{
           title: "Run",
@@ -59,10 +65,19 @@ export default function TabLayout() {
           ),
         }}
       />
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="profile"
         options={{
           title: "Profile",
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={28} name="paperplane.fill" color={color} />
+          ),
+        }}
+      /> */}
+      <Tabs.Screen
+        name="store"
+        options={{
+          title: "Store",
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="paperplane.fill" color={color} />
           ),
@@ -71,8 +86,3 @@ export default function TabLayout() {
     </Tabs>
   );
 }
-
-import { useSession } from '@/contexts/AuthContext';
-import { ThemedText } from "@/components/ThemedText";
-
-

@@ -5,7 +5,7 @@ import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { StyleSheet } from "react-native";
 
-export default function profile() {
+export default function ProfileScreen() {
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}
@@ -19,7 +19,7 @@ export default function profile() {
       }
     >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
+        <ThemedText type="title">Profile Page!</ThemedText>
         <HelloWave />
       </ThemedView>
     </ParallaxScrollView>
